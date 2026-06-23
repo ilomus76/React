@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>es6 module</title>
+    <!-- 모듈 : JS에서 다른 JS파일에 있는 함수/변수/클래스 등을 가져다 사용하는 기법 -->
+    <!-- 자바스크립트를 안에 가져오면 그 안에 잇는 변수는 공유가 된다.  -->
+    <!-- 자바스크립트는 HTMl과 연결되면 변수 공유가 됨.  -->
+
+    <!-- 모듈 기능은 2가지 조건에서 구동됨 : 서버환경(open with live server도 됨. ). module type임을 속성으로 명시 -->
+     <!-- 리엑트환경은 기본적으로 이 2가지 조건이 마련된 프로젝트 구조임.  -->
+      <!-- 리엑트의 환경은  index.html이 하나만 있어 그것을 jsx를 통해서 업데이트 하고 또다른 jsx를 불러와서 업데이트를 해야 하니..jsx를 불러와야 함.-->
+    <script type="module">
+        //별도의 js에 있는 show 함수를 불러와서 사용해 보기...
+        // import show from './aa.js' ; // 파이썬과 순서가 다름. 나머지는 같음.  // export default 된 녀석만 import 가능. 
+
+        // export default가 아닌 녀석을 import 할때는.. {}가 필요
+        // import {output, name, age} from './aa.js';
+        // import {output, name, age as a } from './aa.js';  // 변수들을 짭게 하나로 만들때
+
+        import show,{output,name,age as a} from './aa.js'; // 리액트 할때 이것을 자주 본다. 
+
+        // import * as jjj from 'aa.js'  // * 가 모든것이 아닌 와일드 카드라고 부름.  // 하지만 모든걸 jjj.show()로 해야 함. 
+        // jjj.show()      
+
+        // import한 함수를 호출해 보기
+        show();
+        output();
+        // document.write(name+"," +age + '<br>'); // 모듈 범위 내에서 안됨. 
+        // alert(name+'\n'+age); // 변수값들을 하나로 불러올때는 아래와 같이 함.
+        alert(name+'\n'+a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+
+<!-- 리액트를 사용하려면 node.js를 설치하여 개발 환경을 만들어야 함.  -->

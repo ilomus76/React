@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrow function</title>
+
+    <script>
+        // 함수를 정의하는 새로운 문법 : 화살표 함수 ( Arrow Function)
+
+        // 1. [기존방식] 선언적 함수
+        function show(){   // 파이썬에선 function이 def였음.
+            document.write('show!!<br>');  
+        }
+
+        show(); 
+
+        //2. [기존방식] 익명함수 - 꼭 변수에 할당해야 함. 그냥 쓰면 에러.
+        const output = function(){  // 변수를 let으로 해도 됨
+            document.write('익명함수 output!!<br>');
+        }
+        output();
+
+        //3. [새로운 방식] 화살표함수 - 익명함수를 더 간결하게...
+        // 즉 기본은 익명함수
+        // let display = function(){
+        //     document.write('display!,<br>');
+        // }
+
+        let display = ()=>{  // 두꺼운화살표 함수 ... 붙여써야 함.. 다른 언어에서는 -> 이렇게 함. 
+            document.write('display!<br>');
+        }
+        display();
+
+        // 화살표 함수로 파라미터를 받을 수 있음.
+        // let display2 = function(name){
+        //     document.write('display2:' + name + '<br>');
+        // }
+
+        let display2 = (name)=>{
+            document.write('display2:' + name + '<br>');
+        }
+        display2('sam');
+        display2('robin');
+
+        //이제부터 function과의 차이점.
+        //만약 화살표함수의 파라미터가 1개라면..()를 생략해도 됨.
+        let display3 = name=>{
+            document.write('display3:' + name + '<br>');
+        }
+        display3('hong');
+
+      
+        
+          // 만약.. {}실행문 안에 1줄만 있다면.. {}도 생략가능
+        let display4 = name=>document.write('display4:' + name + '<br>');
+
+
+        
+        
+        display4('park');
+
+        // 파라미터가 0개이거나.. 2개 이상이면 ()생략 불가능
+        // let display5 = =>document.write('diplay5<br>'); // error
+        let display5 = ()=>document.write('display5<br>');
+        display5();
+
+        // const display6 = name,age => // error , 안됨.
+        const display6 =(name,age)=>document.write(name + ',' +age +'<br>');
+        display6('kim',35);
+
+        //body로 가자.. 화살표 함수 사용예 보러
+
+    </script>
+</head>
+<body>
+	<hr>
+    <!-- 화살표함수는 일반저긍로 이벤트 처리용 콜백함수로 많이 사용됨.  -->
+     <!-- 콜백함수는 내가 불러 사용하는 것이 아니다라는 것 -->
+      <button id="b1">button</button>
+      <!-- 이곳에서 onclick 속성을 주면 나중에 수정하기 힘듦 -->
+      <h3 id="hh"></h3>
+        <script>
+            //1. 버튼 클릭 이벤트 처리하기
+            //1) 예전 방식
+            const b1 = document.getElementById('b1');
+            b1.onclick = function(){
+                document.getElementById('hh').innerHTML = 'click button';
+            }
+
+            //2)화살표 함수로..
+            b1.onclick=()=>document.getElementById('hh').innerHTML='click button'; // 옛날방식
+
+            //2. 반복문 처리할때도 화살표함수 활용
+            let aaa = [10,20,30];
+            //css 선택자로 h3요소를 찾아서 값들을 출력해 보기
+            const h3= document.querySelector('#hh'); // 요즘 방식 -> 자식 자손을 줘서 좋다. 
+            h3.innerHTML = '';
+            // 요소가 여러개 이니 .. += 으로 누적하여 보여주기
+            h3.innerHTML += aaa[0] + '<br>';
+            h3.innerHTML += aaa[1] + '<br>';
+            h3.innerHTML += aaa[2] + '<br>';
+            h3.innerHTML += '<hr>';
+
+            //반복문으로 위 작업을 처리 -> 가변성에서 좋다. 
+            for(let i =0; i<aaa.length; i++){
+                h3.innerHTML += aaa[i] + '<br>';
+            }
+            h3.innerHTML += '<hr>';
+
+            //위 반복문은 실수의 여지가 존재함.  --- 인덱스 번호르 알아서 0부터.. 요소개수만큼 반복.
+            // 파이썬과 비슷
+            for( i in aaa){ // let i 라고 안해도 됨
+                h3.innerHTML += aaa[i] + '<br>';
+            }
+            h3.innerHTML += '<hr>';
+
+            // 이것도 짜증... index 번호를 이용하기에.. 요소를 사용할때마다..aaa[i] ... 이것도 쓰기 짜증. 실수도 많이함.
+            // 배열객체가 본인 요소의 개수만큼 반복하는 기능을 가지고 있음.
+            //.forEach()에 전달될 함수가 요소의 개수만큼 자동으로 실행됨.
+
+            // 1)
+            // aaa.forEach(function(value, index, array){ // 파라미터는 요소값, 인덱스번호,배열객체
+            //     // aaa야 각각에 대해서 이 함수를 실행해봐..
+            //     h3.innerHTML += value + '<br>';
+            //     // 3가지 변수중에 하나만 사용했음... 그래서 필요한 것을 사용해도 됨
+            // });
+
+            //2)
+              aaa.forEach(function(value){ // 필요한 값만 써도 됨. 순서만 중요
+            //     // aaa야 각각에 대해서 이 함수를 실행해봐..
+                 h3.innerHTML += value + '<br>';
+            //     // 3가지 변수중에 하나만 사용했음... 그래서 필요한 것을 사용해도 됨
+             });
+
+            //3)
+            //.forEach()에 지정한 함수를 화살표 함수로 변경하면..더 간결해짐.
+            // aaa.forEach( (value)=>{h3.innerHTML += value +'<br>'});
+            //4)
+            aaa.forEach( value=>h3.innerHTML += value +'<br>');
+
+            //각각의 요소에 접근하여 콜백함수의 내용을 수행하고 그 결과를 다시 새로운 배열로 리턴하는 map()
+            // 원래 배열이 아닌 새로운 배열을 줄것이다.   map()
+
+            // 예) 배열의 각 요소를 제곱한 값들을 가진 새로운 배열 만들기
+            // aaa.map(function(){}); // 함수를 주면 요소의 갯수만큼 호출
+            // aaa.map((vlaue,idx,array){}); // 함수를 주면 요소의 갯수만큼 호출 
+            // 단 순서가 중요... 단 하나만 사용해도 됨.
+            // let bbb =  aaa.map(value=>{return value*value}); // {}를 생략하면면... return 키워드와 ; 모두 제거.
+            let bbb =  aaa.map(value=>value*value); // {}를 생략하면면... return 키워드와 ; 모두 제거.
+
+            document.write(bbb);//JS는 배열을 그대로 출력하면..요소값들을,, 구분으로 하여 출력해줌.
+
+            // 함수를 간결하게 사용하기 위한 방법들은 리엑트 사용할때 좋음.  마지막 하러 04러 가자..
+
+
+        </script>
+</body>
+</html>
