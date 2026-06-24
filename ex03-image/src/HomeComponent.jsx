@@ -89,4 +89,5 @@ export default HomeComponent
 // ctrl + c
 // npm 
 // exit : terminal 빠져나가기
-// clear : terminal 명령어 지우기
+// clear : terminal 명령어 지우기/
+// npm run build  : 배포하기 , 즉 서버에 올릴 데이타 만들기.
