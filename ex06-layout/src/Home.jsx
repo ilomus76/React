@@ -56,7 +56,7 @@ class Home extends Component{
                     {/* 이미지 파일을 public폴더에 넣어보다(마치 현재 폴더인거처럼 경로 지정) */}
                     <img src="./ms_01.png" alt="" />
                 </div>
-            </Header>
+            </Header>/
 
             {/* 인스타그램 로그인 요청 화면 UI 만들어보기 - 일반 CSS 파일로 적용해 보기 */}
             {/* 엣날 방식 */}
