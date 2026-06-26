@@ -1,0 +1,44 @@
+.item{
+    border: 1px solid gray;
+    padding:16px;
+    margin: 4px;
+    border-radius: 4px;
+
+    display:flex;
+    flex-direction: column;
+}
+
+.line1{
+    width:100%; 
+    /* 꽉차게 */
+    margin-bottom: 8px;
+}
+
+.line1 span{
+    /* 자손 */
+    font-size: 1.5rem;
+    font-weight:600;
+    /* 다시 강의 듣자 */
+}
+
+.line1 img{
+    margin-left:300px;
+}
+.line1 span:nth-child(1){
+    /* 첫 자식 */
+    margin-right: 2rem;
+}
+
+.line1 span:nth-child(2){
+    color:green;
+}
+
+.line2{
+    color:darkolivegreen
+}
+
+.item:hover, .item:active{  
+    /* 모바일에서는 hover가 없어 active가 hover의 역할을 함 - 손가락이기 때문에 */
+    background-color: lightgray;
+    cursor: pointer;
+}
