@@ -1,0 +1,63 @@
+//2-12
+
+.TodoInput{
+    display:flex;
+    flex-direction: row;
+    input{
+
+        // 버튼을 제외한 나머지 영역 모두 차지하기.. flex의 자식용소 속성 flex-grow
+        flex:1;  // flex-grow의 축약표현
+        //버튼은 기본적으로 제로이기 때문에 나머지 다 먹어.
+
+        padding:1rem;
+        border:none;
+
+        // 포커스를 주면 아웃라인이 보임.
+        // focus를 받았을때 outline이 그려지지 않도록.
+        outline: none;
+        font-size: 1.15rem;
+        // 힌트 글씨 색깔이 마음에 않들어서 바꾸고 싶다.
+
+        // 힌트 글씨에 대한 스타일 - 현재 요소를 지칭하는 기호 &
+        &::placeholder{  
+	    // 의사 요소 : 없는 요소를 만들어 내는 것 :: , : 는 의사 선택자
+            // border:none;
+            color:darkgoldenrod;
+        }
+
+
+
+    }
+    
+    button{
+        //경계선 영역
+        border: none; 
+        // 버튼을 빼고 나머지 다 먹어라..
+
+        background-color: orange;
+        //SVG 아이콘은 그림처럼 보이지만, 글씨로 그림을 그린 것이기에...
+        //색상을 바꾼다는 것은 글씨색상을 변경하는 것임.
+        color : white;
+        font-size: 1.5rem;
+        padding:1rem;
+        cursor: pointer;
+
+        // 세로가 살짝 위로 있는것 같다. svg 자체가 살짝 위로 뜬듯.
+        display: flex;
+        align-items: center;
+
+        &:hover{
+            background-color: orangered;
+        }
+
+        &:active{
+            background-color: red;
+        }
+
+        //hover되었을때 배경색 전환효과 주기
+        transition: background-color 0.5s;
+
+        //화면부터 만들어라.. 기능은 나중에..
+
+    }
+}

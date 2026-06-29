@@ -1,0 +1,53 @@
+.TodoItem{
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+
+    &:hover{
+        // 내자신의 호버링이 생기면 배경색 바꾸자
+        background-color: bisque;
+    }
+
+    .checkbox{  
+        // 체크박스 클래스
+        font-size: 14px; 
+        display: flex;
+        align-items: center;
+        padding: 2px;
+    }
+
+    .content{
+        // 나머지 공간 모두 차지 flex-grow , 이것읠 축약 flex
+        flex: 1;
+        margin-left: 1rem;
+    }
+
+    .delete{
+        font-size: 20px;
+        color:red;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        pad:2px;
+    }
+
+    & + &{ 
+        // 형제중에 형제 
+        // 맨위에는 안주고 마지막에 주기.. (lastchild도 가능)
+        border-top: 1px solid wheat;
+    }
+
+
+    //현재요소 (클래스 명이 TodoItem 중에 즉 (.TodoItem)중에 isDone이라는 클래스명이 있는 요소 선택
+    &.isDone{
+        .checkbox{
+            color:orange;
+        }
+        .content{
+            color: gray;
+            text-decoration: line-through;
+        }
+    }
+}

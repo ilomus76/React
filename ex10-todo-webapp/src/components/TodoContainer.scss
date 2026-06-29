@@ -1,0 +1,32 @@
+// 2-7 아웃라인 박스 스타일 적용
+.TodoContainer{
+    width:500px; 
+    // 사이즈의 변화가 없도록 고정, 위아래 고정, 좌우 자동으로 ...
+    margin: 5rem auto; 
+    // 위로 5글자정도
+
+    border: 1px solid black;
+    border-radius: 6px;
+    // 자식 요소가 부모 요소의 범위를 벗어나면 안보이도록 
+    overflow:hidden;
+
+    //계층구조로 자식 자손을 표현 : scss
+    .app-title{
+        background-color: wheat;
+        color: black;
+        font-weight: bold;
+        font-size:2rem; 
+        // 원래 크기보다 2배
+        height: 5rem; 
+        // 내가 2rem이니 위아래 2자정도
+
+        font-family: 'Times New Roman', Times, serif;
+        // 텍스트 정렬은 가로정렬만.. 세로정렬 힘듦.
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+}
