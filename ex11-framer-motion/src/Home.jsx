@@ -2,8 +2,10 @@
 //npm install framer-motion
 
 //motion기능을 사용하기 위해 import
+// import {motion} from 'framer-motion'을 먼저 수행
 import {motion, useAnimationControls} from 'framer-motion' 
 // 자동완성 되야 라이브러리기능 잘 설치된것임 
+
 
 // import ms19 from './ms19.png'
 import ms19 from './assets/ms19.png'
@@ -15,16 +17,18 @@ function Home(){
     //애니메이션의 컨트롤러(조이스틱같은것)를 만들어주는 HOOK기술(useXXX()함수)
     const controls = useAnimationControls() 
     // 애니메이션 컨트롤을 이용하는 녀석
+    // 여기서의 Hook은 react 팀에서 만든 useSetState의 변수 함수를 만드는 것이 아니라 Hook 애니메이션 framework팀에서 만든것임.
+    // 그래서 setState와는 다름.
     return(
         <div>
-            <h2>frame motion 라이브러리</h2>
+            <h2>framer motion 라이브러리</h2>
             {/* npm install framer-motion을 설치해야 함. */}
 
             {/* 1) 애니메이션이 가능한 div 요소를 사용 */}
             <motion.div 
                 initial={{x:10,y:5}} // 애니메이션의 시작위치(놓여놓여진 위치를 기준으로 배치됨)> 
-                animate={{x:100,y:50}} // 움직일 곳의 좌표
-                transition={{duration:3, repeat:Infinity}} // 3초 동안이동
+                animate={{x:100,y:50}} // 움직일 곳의 좌표 (도착지)
+                transition={{duration:3, repeat:Infinity}} // 전환효과 : 3초 동안이동(리프레쉬해야 적용됨.)
             >나는 움직이는 div입니다</motion.div>
             {/* 마치 스타일드 컴포넌트개님 */}
             <hr />
@@ -49,6 +53,7 @@ function Home(){
         <motion.img 
             src={ms19}
             style={{height:100, border:'solid', margin:'16px auto' , display:'block'}}
+            //위치를 가운데로 두기 위해서 , block
             drag='x' //both: true  양쪽을 다 바꾸고 싶다면 true
             // 자꾸 나가니 제약사항을 걸꺼다.
             dragConstraints={{left:-100,right:100}} //현재 위치부터 좌우 드래그범위 제한
