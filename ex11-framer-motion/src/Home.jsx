@@ -19,6 +19,9 @@ function Home(){
     // 애니메이션 컨트롤을 이용하는 녀석
     // 여기서의 Hook은 react 팀에서 만든 useSetState의 변수 함수를 만드는 것이 아니라 Hook 애니메이션 framework팀에서 만든것임.
     // 그래서 setState와는 다름.
+
+
+    // return 안의 모든 JS 변수는 return안에서 지역변수가 되어 각 함수에서 사용이 가능하다. 
     return(
         <div>
             <h2>framer motion 라이브러리</h2>
@@ -54,14 +57,13 @@ function Home(){
             src={ms19}
             style={{height:100, border:'solid', margin:'16px auto' , display:'block'}}
             //위치를 가운데로 두기 위해서 , block
-            drag='x' //both: true  양쪽을 다 바꾸고 싶다면 true
+            drag='x' //both: true  양쪽을 다 바꾸고 싶다면 true :  "x 축을 움직이겠다.라는 뜻으로 문자를 넣은 것이다."
             // 자꾸 나가니 제약사항을 걸꺼다.
             dragConstraints={{left:-100,right:100}} //현재 위치부터 좌우 드래그범위 제한
 
             //0이면 아에 못움직이는 것이고 0.3이면 조금 움직임.
             dragElastic={0.3} //제한범위 바운더리에서 움직임 허용치
-            onClick={()=>controls.start('open')}
-            
+            onClick={()=>controls.start('open')}            
             
             ></motion.img>
             <hr />
@@ -78,7 +80,7 @@ function Home(){
                     open:{y:0} //원래위치
                 }}
                 animate={controls}
-                initial='close' // 초기상태는 닫신 상티
+                initial='close' // 초기상태는 닫한 상태
                 drag = 'y'
                 dragConstraints={{top:0}}
                 // drageElastic={{0}}
