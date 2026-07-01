@@ -11,8 +11,7 @@ import Category from './component/Category'
 function Home(){
 
 
-    // const icons = [
-    //     {CiViewList, FaEye,MdStar , LiaEyeDropperSolid];
+  
 
 
     return(

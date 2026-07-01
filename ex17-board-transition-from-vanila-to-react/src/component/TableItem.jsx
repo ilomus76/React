@@ -20,6 +20,8 @@ function TableItem(props){
     return (
         <div>
 
+            
+
             <table className="board_list">
 
                 <thead>
