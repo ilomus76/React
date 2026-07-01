@@ -1,0 +1,153 @@
+/* default로 만들어졌던 index.css의 값들을 다 지우고 여기에 내가 원하는 값으로 다시 변경 */
+/* 부모 요소의 height에 영향을 받는 것을 확인하기 위해서  */
+/* Home의 div의 height를 화면 전체로 하고 싶은데 100%라고 설정하면 그 부모가 기준이 되어야 함 */
+/* 이 프로젝트에서 index.html에서 사용하는 index.css에서 해당 root의 height 크기가 없다면 자식의 요소의 사이즈를 따라가게 된다 */
+/* 하지만 부모의 요소가 height를 px로 설정하면 자식의 height도 그것을 기본으로 따라가지만 %로 설정하면 또 그 위의 부모의 사이즈에 영향을 받음 */
+/* 결국 HTML의 구조에서 최고 위에 있는 document->Html-> body(+ head) -> div -> home의 div순대로 부모 자식 관계가 됨. */
+
+
+#root{
+  /* height:300px; */
+  height: 100%; 
+  /* 이 요소의 부모요소의 body가 먹기에 100% 안되서 body도 설정해줘야 함. */
+}
+
+body{
+  height: 100%;
+  /* 이 보다 더 큰 부모가 있다. html */
+  /* 웹앱 전체의 폰트 */
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 10px;
+}
+
+html{
+  height:100%;
+  /* 이 보다 더 부모는 document */
+}
+
+*{
+  padding: 0px;
+  margin:0px
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+
+
+/* :root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+} */

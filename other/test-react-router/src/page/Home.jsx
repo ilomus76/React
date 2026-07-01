@@ -7,6 +7,7 @@ function Home(){
         <div>
             <p>HOME</p>
             <a href="/second">두번째 페이지로 이동(a 요소)</a> 
+            <a href="/second">두번째 페이지로 이동(a 요소)</a> 
             <br />
             <Link to="/second" replace={true}>두번째 페이지로 이동(LINK 요소 이동)</Link>
             <p>

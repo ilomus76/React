@@ -1,0 +1,36 @@
+TMDB 사이트 의 TMDB open API 영화 list.json , 상세 영화정보.json 
+https://www.themoviedb.org/
+
+
+화면 데이타 지금까지 목데이타..
+영화정보... 연재씨가 했던 것을 react로...
+실제로 서버로 받은 것...
+imdb로 부터 시작해서... 영화정보가 여기가 많이 유명한데.. 영화 포스터가 유료라 TMDB는 무료...
+open API로 제공.
+
+TMDB
+The Movie Database의 약자로, 영화와 TV 프로그램 정보를 제공하는 온라인 데이터베이스 IMDB 를 기반으로 제작된 사이트 (영화 포스터, 스크린샷등의 이미지도 무료로 가져올 수 있는 사이트)
+(apikey 발급 필요)
+
+
+
+[OPEN API Endpoint ]
+
+TMDB 인기순 
+const apiUrl='https://api.themoviedb.org/3/movie/popular?api_key=4704d6d917590acc0fdea33c3505baa7&language=ko-KR&page=1'
+
+
+TMDB 영화상세화면 open api  - url params로 전달받은 영화 id 정보를 요청파라미터로 지정. image와 출연자 정보도 같이 요청가능.
+const api_url= `https://api.themoviedb.org/3/movie/${params.id}?api_key=4704d6d917590acc0fdea33c3505baa7&language=ko-KR`
+
+
+TMDB 이미지 상대경로를 src에 적용하려면 전체 주소가 필요함.
+`https://image.tmdb.org/t/p/original${movie.poster_path}`
+
+
+
+
+5교시
+코어스 쉐어링 정책.
+TMDB 서버로 갔다. 
+사실 fetch로 

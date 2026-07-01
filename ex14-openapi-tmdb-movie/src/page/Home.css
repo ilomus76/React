@@ -1,0 +1,33 @@
+/* default로 만들어졌던 index.css의 값들을 다 지우고 여기에 내가 원하는 값으로 다시 변경 */
+/* 부모 요소의 height에 영향을 받는 것을 확인하기 위해서  */
+/* Home의 div의 height를 화면 전체로 하고 싶은데 100%라고 설정하면 그 부모가 기준이 되어야 함 */
+/* 이 프로젝트에서 index.html에서 사용하는 index.css에서 해당 root의 height 크기가 없다면 자식의 요소의 사이즈를 따라가게 된다 */
+/* 하지만 부모의 요소가 height를 px로 설정하면 자식의 height도 그것을 기본으로 따라가지만 %로 설정하면 또 그 위의 부모의 사이즈에 영향을 받음 */
+/* 결국 HTML의 구조에서 최고 위에 있는 document->Html-> body(+ head) -> div -> home의 div순대로 부모 자식 관계가 됨. */
+
+
+
+
+.Root{
+    background-color: black;
+    color: white;
+    min-height: 100%;
+    /* 부모가 높이 설정을 안하면 자식의 영역만큼만 됨 */
+    /* 이 요소의 부모요소의 사이즈가 있어야 함.  */
+    /* div 즉 index.html의 div root이고 index.css에 있는데 그것을 지워라... 그리고 main.jsx에서 살려라.*/
+
+    text-align: center;
+    padding:3rem;
+}
+
+.Root header h1{
+    font-size: 2rem;  
+    /* body가 10px정도이니 두배는 20px : index.css*/
+}
+
+.Root main{
+    width: 80%; 
+    /* 가운데정도만 사용하기 위해서 */
+    max-width: 980px;
+    margin:2.5rem auto;
+}

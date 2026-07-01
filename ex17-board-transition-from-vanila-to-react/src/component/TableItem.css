@@ -1,0 +1,26 @@
+
+/* tr{
+    background-color: #eeeeee;
+} */
+
+/* th{
+    background-color: #eeeeee;
+} */
+
+.board_list{
+    width: 100%;  
+    /* 부모의 사이즈 기준 100% */
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+
+    /* 표안의 선은 td or th들이 그려야 함. 만약 tr로 선을 그리려면 선을 뭉게야 함. */
+    border-collapse: collapse;
+}
+
+/* 칸별 너비 지정 */
+.col_no{width:10%;}
+.col_title{width:20%;text-align: left;}
+.col_writer{width:10%;}
+.col_date{width:20%;}
+.col_hits{width:20%;}
+.col_eval{width:20%}
