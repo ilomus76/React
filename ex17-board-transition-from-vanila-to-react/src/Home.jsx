@@ -3,12 +3,18 @@ import SearchInput from './component/SearchInput'
 import Board from './component/Board'
 import PopularBoard from './component/PopularBoard'
 import './Home.css'
-import Category from './component/Catergory'
+import Category from './component/Category'
 
 
 
 
 function Home(){
+
+
+    // const icons = [
+    //     {CiViewList, FaEye,MdStar , LiaEyeDropperSolid];
+
+
     return(
         <div className="main_container">
             {/* <p>main_container</p> */}
@@ -25,11 +31,14 @@ function Home(){
                 </div>
                 <div className="middle_info">
                     {/* <p>middle_info</p> */}
-                    <InfoBoard></InfoBoard>
-                    <InfoBoard></InfoBoard>
-                    <InfoBoard></InfoBoard>
-                    <InfoBoard></InfoBoard>
-                    
+                    {/* <InfoBoard></InfoBoard> */}
+                    {/* // <InfoBoard></InfoBoard> */}
+                    {/* // <InfoBoard></InfoBoard> */}
+                    {/* // <InfoBoard></InfoBoard> */}
+                    {/* //  */}
+                    {/* //  {icons.map((Icon, i) => ( */}
+                    {/* //     <InfoBoard  key={i} icon={<Icon />} /> */}
+                    {/* // ))} */}
 
                 </div>
                 <div className="main_info">

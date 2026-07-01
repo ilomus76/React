@@ -1,24 +1,20 @@
-import { useRef } from "react"
 import { useState } from "react"
 
 function Home(){
 
-    //1) 번 실습
 
-    const [title,setTitle] = useState('')
-    const [message,setMessage] = useState('') 
-    // 화면갱신할건 아니라 연습하기 위해서 사용 
+    const [title, setTitle] = useState('')
+    const [message,setMessage] = useState('')
 
-    const changeTitle = (event)=>setTitle(event.target.value) 
-    // 위의 변수에 대입함. event 메세지가 올때 마다.... 
-    const changeMessage = (event) => setMessage(event.target.value)
-
+    const changeTitle = (event)=>{setTitle(event.target.value)}
+    const changeMessage = (event)=>{setMessage(event.target.value)}
 
     // const submitGet = ()=>{
     const submitGet = (event)=>{
+    
         // form 요소는 action 속성이 있든 없든.. 무조건 페이지를 갱신함. SPA에 맞지 않음.
-        // 그래서 기본 기능을 막기
-        event.preventDefault() 
+        // 그래서 기본 기능을 막기  
+        event.preventDefault()
         //input 요소의 값들을 가져와서 서버 backend에 전송 (ajax -fetch())
         // alert(title +'\n' + message)
 
@@ -31,188 +27,36 @@ function Home(){
         const url = '../backend/aaa.php?title='+title+'&msg='+message  
         // 결합 연산자... 
 
-        // fetch(url).then(function(response){
-        //     return response.text()
+
+    //     fetch(url).then(function(response){
+    //         return response.text()
     
-        // }).then(function(text){
-        //     alert(text)
-        // })
-        // 위의 fetch함수를 아래로 하나로 만듦
+    //     }).then(function(text){
+    //         alert(text)
+    //     })
+    //     // 위의 fetch함수를 아래로 하나로 만듦
 
         fetch(url).then(res => res.text()).then(text => alert(text))
-
+     
         // AJAX는 반드시 서버에 배포해야 실행 됨.
         // 리액트를 배포하려면 .. npm run build로 배포용 dist폴더를 만들고 
         // dist 폴더안에 있는 모든 파일/폴더를 호스팅서버(dothom)업로드 해야 함. 단 /vite 처럼 서브경로가 있다면 vite.config.js파일에 등록해야 함.
         // base:'/vite/frontend' or base:'/vite/frontend/'
         // 마치 빌드하면 dist폴더가 frontend 폴더와 같은 역할임. 
 
-    }
-
-    // -------------------------------------------------------------------------
-
-    // 4교시-1  radio 버튼 선택 값을 저장하는 변수
-    const [gender, setGender] = useState('female') // 초기값 : 여성 , Hook
-    //checkbox 버튼 선택 값들을 저장하는 배열변수
-    const [fruits,setFruits] = useState(['apple','orange']) // 초기값
-    // 전달 받은 값이 fruits배열에 있으면 제거. 없으면 추가하는 함수
-    const changeCheckbox = (value)=>{
-        if(fruits.includes(value)){
-            // 있으면
-            // 배열요소의 제거는 .. 그 요소만 제외하고 필터링 된 새 배열 만들어야 함.
-            // 그래야 새 배열을 만들어야 state 가 바뀜 어제 함.
-            const newFruits = fruits.filter(element=>element!=value)
-            // 요소 element와 같지 않는 것을 나와.
-            setFruits(newFruits)
-
-        }else{
-
-            // 배열요소의 추가도.. 원래 배열ㅇ르 복제한 새 배열을 만들고 value 추가.
-            // const newFruits = [fruits[0],fruits[1]]
-            const newFruits = [...fruits,value]
-            // 전개 연산자 , 원래 있던값 확 펼치고 value를 추가. 
-            setFruits(newFruits)
-
-        }
 
     }
 
 
-    // select 요소가 선택한 값 저장 변수
-    const [brand, setBrand]=useState('기아')
-
-
-    // textarea 요소에 써있는 글씨 저장 변수
-    const [content, setContent] = useState('') // 빈글씨로 초기화(띄워쓰기가 없어야 함. 띄어쓰기 있는 것은 빈글씨 아님.)
-
-    const clickBtn= ()=>{
-        //선택값들을 저장하고 있는 변수들의 값을 경고창으로 보여주기
-        let s=''
-        s += gender + '\n'
-        s += fruits + '\n'
-        s += brand + '\n'
-        s += content + '\n'
-
-        alert(s)
-    }
-
-
-    const submitPOST=()=>{
-
-        // 서버에 보낼 데이터가 많으니.. 이를 json문자열로 바꿔서 전송해보기 (요즘 권장) key=value&key=value 보다 간편해서...
-        const data={
-            gender:gender, // 식별자 : 값
-            fruits:fruits,// 식별자 : 값
-            // 식별자와 값을 가진 변수명이 같다면.. 변수명만 써도 됨 (자동으로 key가 변수명으로 ...)
-            brand,
-            content
-        }
-
-        //JS 객체형태의 데이터를 json 문자열로 변환  , 객체로 바꾸는 것은 JSON.parse
-        const jsonData = JSON.stringify(data)
-        alert(jsonData)
-
-        // json 데이타를 backend의 php 코드에 전송하고 응답받기( ajax -fetch()이용)
-        const url = '../backend/bbb.php'
-        fetch(url, {
-
-            method: 'POST',
-            headers:{'Content-type':'application/json'},
-            body : jsonData
-        }).then(res=>res.text()).then(text=>alert(text))
-
-
-    }
-
-
-    // 사용자가 선택한 파일을 저장하는 state변수
-    const [file,setFile] = useState() // 초기값이 없으면 null
-    // 사용자가 input요소의 파일선택을 변경했을 때 실행 될 함수 
-    const changeFile=(event)=>{
-        //다른 input요소와 다르게 value로 값을 얻으면..가짜 경로가 옴.
-        // alert(event.target.value) 
-        // 가짜 경로 ->
-        // 실제 파일데이터를 가져와야 함.
-        const files = event.target.files // 여러개 선택일 수 있어서 배열로 옴
-        // 이 예제는 파일 1개 짜리...[파일명, 파일사이즈,파일타입]확인
-        const filename=files[0].name
-        const filesize=files[0].size
-        const filetype=files[0].type
-
-        //파일이 제대로 선택되었는지 확인
-        // alert(filename + '\n'+filesize + '\n'+filetype)
-
-        //파일 정보를 file state변수에 저장
-        setFile(files[0])
-    } 
-    const submitFile=(event)=>{
-        event.preventDefault()
-        //파일데이터를 서버에 존성확인 위해 택배상자에 포장.
-        const data = new FormData()
-        data.append('img',file)
-
-        fetch('../backend/ccc.php',{
-            method:'POST',
-            body : data
-        }).then(res=>res.text()).then(text=>alert(text))
-
-    }
-
-    //5) 실습
-    // nickname 입력요소와 파일 입력요소를 참조하는 참조변수 만들기 - HOOk기술
-    const nicknameRef = useRef()
-    const fileInputRef = useRef()
-
-    //제출버튼 눌렀을 때..
-    const submitData=(event)=>{event.preventDefault()
-
-    //ref 참조변수들을 참조하고 있는 input요소의 값들(닉네임, 파일들)을 가져오기
-    const nickname = nicknameRef.current.value 
-    // 현재 참조하고 있는 값
-    const files = fileInputRef.current.files
-    // 현재 참조하고 있는 파일들
-
-    //사용자의 값들을 서버에 보내기 위해 택배상자(FormData)를 만들기
-    const data = new FormData() // 택배상자
-    data.append('nickname',nickname) // 식별자: 글씨데이타
-    // data.append('img[]',files) // 백엔드가 php일때만 배열을 보낼때 식별자에 []필요
-    for(const file of files){
-        data.append('img[]',file)
-    }
-
-    // fetch()함수를 이용하여 데이터 전송(POST 방식method)
-    // index.html이 기준 , default는 get 방식
-    fetch('../backend/ddd.php',{
-        method:'POST',
-        body:data
-    }).then(res=>res.text()).then(text=>alert(text)).catch(error=>alert(error.message))
-    // ddd.php는 만들 수 있을 것으로 생각해서 안만들고 감.
-
-    }
+    //////////////////////////////
 
 
 
+//     }
+
+    ///////////////////////////////
 
 
-
-    // 다중 선택이 가능한 파일선택이 완료되면...
-    const [imgUrls, setImgUrls]= useState([]) // 빈배열 , imgUrls를 바꾸려면 setImgUrls로 해야 함. 
-    const changeFiles = (event)=> {
-        //선택한 파일들의 정보를 가져오기
-        const files = event.target.files 
-        //파일정보를 가진 객체를 그대로 img요소에 표시될 수 없음.
-        //URL 정보로 변경해야 함. 
-        const newImageUrls=[]
-        for(const file of files){
-            // 파이썬에서는 of 대신 in , 자바스크립트에서 in은 index값이 옴
-            const url = URL.createObjectURL(file)
-            newImageUrls.push(url) 
-            // push는 내용 넣기..
-            
-        }
-        // 이 이미지의 url을 state변수에 저장하여 화면이 새로 그려지도록....
-        setImgUrls(newImageUrls)
-    }
     return(
         <div>
             <h2>REACT HTTP REQUEST</h2>
@@ -228,102 +72,27 @@ function Home(){
             {/* 여전히 form 요소의 submit 이벤트로 처리함 */}
             {/* why? 버튼클릭말고.. 키보드 enter키를 눌렀을때도 전송되도록 하고 싶다면.. from사용 */}
             {/* 1)GET방식으로 간단하게 데이터 전송실습 */}
+
             <h4>GET method TEST</h4>
-            <form onSubmit={submitGet} >
-                <input type="text" placeholder="title" onChange={changeTitle} />
-                {/* 글씨를 입력할때 마다 나오는 onchange 메세지에 따라 함수 발동 */}
+            <form onSubmit={submitGet}>
+                <input type="text" placeholder="title2" onChange={changeTitle} />
                 <input type="text" placeholder="message" onChange={changeMessage} />
                 <input type="submit" />
-            </form>
-            <hr />
-            {/* 2) 사용자의 다양한 입력형태 (checkbox,radio)의 데이터를 취득하기 */}
-            <h4>다양한 input type의 value값을 state 변수에 저장하기</h4>
-            <h5>radio button ~ single choice</h5>
 
-
-            {/* // 4교시-2  radio 버튼 선택 값을 저장하는 변수 */}
-            <div>
-                GENDER: 
-                {/* <label > <input type="radio" checked={true} />남성</label>
-                <label > <input type="radio" checked={false} />여성</label> */}
-                <label > <input type="radio" checked={gender=='male'} onChange={()=>setGender('male')} />남성</label>
-                <label > <input type="radio" checked={gender=='female'} onChange={()=>setGender('female')} />여성</label>
-                {/* 자바로 강제로 남성 , 여성을 바꿈. */}
-            </div>
-            <br />
-
-            <h5>checkbox button ~ multiple choice</h5>
-            <div>
-                FRUITS: 
-                {/* <label >사과 <input type="checkbox" checked={true} /></label>
-                <label >바나나<input type="checkbox" checked={false} /></label>
-                <label >오렌지<input type="checkbox" checked={false}/></label> */}
-
-                <label >사과 <input type="checkbox" checked={fruits.includes('apple')} onChange={()=>changeCheckbox('apple')} /></label>
-                {/* 배열의 includes : apple을 가지고 있니. fruits가 애플을 가지고 있니? */}
-                <label >바나나<input type="checkbox" checked={fruits.includes('banana')} onChange={()=>changeCheckbox('banana')} /></label>
-                <label >오렌지<input type="checkbox" checked={fruits.includes('orange')} onChange={()=>changeCheckbox('orange')} /></label>
-            </div>
-            <br />
-
-            <h5>select element ~ select item</h5>
-            <div>
-                자동차 브랜드 선택 : 
-                <select value={brand} onChange={(event)=>setBrand(event.target.value)} >
-                    {/* 바뀌면 event를 받을것이고 그 이벤트 타겟의 값을 불러와라. */}
-                    <option value="현대">현대</option>
-                    <option value="기아">기아</option>
-                    <option value="KGM">KGM</option>
-                </select>
-            </div>
-            <br />
-
-            <h5>textarea 요소 ~ multi line input</h5>
-            <div>
-                CONTENT : < textarea placeholder="enter content" value={content} onChange={event=>setContent(event.target.value)}></textarea>
-
-            </div>
-            <hr />
-
-            <button onClick={clickBtn}>위 4개의 선택 및 입력값들 확인해보기</button>
-
-            <hr />
-            {/* 3) 입력값들을 서버에 전송(POST 방식으로) */}
-            <button onClick={submitPOST} style={{width:'100%', padding:'0.5rem'}}> POST 방식으로 전달하기</button>
-
-            <hr />
-            <h4>파일을 선택 및 전송</h4>
-            <form onSubmit={submitFile}> 
-                {/* submit을 눌루면 onsubmit 실행  */}
-                {/* 모바일 브라우저에서 이 버튼을 누르면 화면 하단에 [앱선택 (카메라,갤러리) 선택화면이 BottomSheet로 제공됨. ] */}
-                {/* 데스크 탑에서는 폴더가 뜨지만 모바일에서는 갤러리가 뜸. */}
-                <input type="file" onChange={changeFile} />
-                <input type="submit" />
-            </form>
-            <hr />
-            <h4>여러개의 파일 선택 및 미리보기 + 글씨 데이터까지 서버로 전송</h4>
-            <form onSubmit={submitData}>
-                {/* 글씨 데이터 */}
-                <input type="text" placeholder="닉네일입력" ref={nicknameRef} />
-                {/* document.get(element)의 기능 */}
-                <br />
-                <input type="file" multiple accept="image/*" ref={fileInputRef} onChange={changeFiles} />
-                {/* 선택된 파일의 미리보기 영역 */}
-                <p>선택된 이미지의 수: {imgUrls.length}개</p>
-                <div style={{borderTop:'2px solid black', borderBottom:'2px solid black', padding:8}}>
-                    {
-                        imgUrls.map((value,idx)=><img src={value} key={idx} style={{width:'20%', margin:4, border:'1px solid black', borderRadius:4}}></img>)
-                    }
-                </div>
-
-                {/* 제출버튼 */}
-                <button type="submit" style={{width:'100%',padding:10}}>닉네임과 파일을 소버에 전송</button>
             </form>
 
-
+            
+                        {/* <form onSubmit={submitGet} > */}
+                {/* <input type="text" placeholder="title" onChange={changeTitle} /> */}
+                {/* 글씨를 입력할때 마다 나오는 onchange 메세지에 따라 함수 발동 */}
+                {/* <input type="text" placeholder="message" onChange={changeMessage} /> */}
+                {/* <input type="submit" /> */}
+            {/* </form> */}
 
 
         </div>
+
+
     )
 }
 export default Home

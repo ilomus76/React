@@ -15,12 +15,27 @@
 
     /* 표안의 선은 td or th들이 그려야 함. 만약 tr로 선을 그리려면 선을 뭉게야 함. */
     border-collapse: collapse;
+    table-layout:fixed;
 }
 
 /* 칸별 너비 지정 */
 .col_no{width:10%;}
-.col_title{width:20%;text-align: left;}
-.col_writer{width:10%;}
+.col_title{width:30%;text-align: left;}
+.col_writer{width:20%;}
 .col_date{width:20%;}
 .col_hits{width:20%;}
-.col_eval{width:20%}
+/* .col_eval{width:20%} */
+
+.board_list{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+.board_list th,
+.board_list td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+    box-sizing:border-box;
+}
