@@ -5,6 +5,11 @@ import InputBox from "../components/InputBox";
 import DayNight from "../components/DayNight";
 import Profile from "../components/Profile";
 
+import TableSheetBoard from "../components/TableSheetBoard";
+import UlListTable from "../components/UlListTable";
+import OlListTable from "../components/OlListTable";
+
+
 import './Home.css'
 
 
@@ -22,6 +27,18 @@ import { RiListIndefinite } from "react-icons/ri";
 import { IoEyeOutline } from "react-icons/io5";
 import { AiTwotoneStar } from "react-icons/ai";
 import { TfiPencil } from "react-icons/tfi";
+
+
+
+import { GrAdd } from "react-icons/gr";
+
+
+
+import { GrTrophy } from "react-icons/gr";
+import { FaFolderOpen } from "react-icons/fa";
+
+
+
 
 
 
@@ -50,6 +67,12 @@ function Home(){
     ]
 
 
+    const table_configuration_context=[
+        {board_name:'Board', colrow:{col:6, row:6},title:['번호','제목','작성자','작성일','조회수','좋아요']} 
+    ]
+    const tabel_icon=<GrAdd />
+
+
     return(
         <div className="Main_container">
             <div className="left_section">
@@ -57,9 +80,16 @@ function Home(){
                 {  
                     // <InfoBoard data={icons_info[0]}></InfoBoard>
                     icons_info.map((icon_info,idx,array)=>{
+
                         if(idx>0) return null
                         // style={{ marginBottom: idx === 0 ? "20px" : "10px" }
                         return <InfoBoard data={icon_info} key={idx} style={{marginBottom: idx===0 ?"20px":"10px"}}></InfoBoard>
+
+                         if(idx>0) return null
+                        // style={{ marginBottom: idx === 0 ? "20px" : "10px" }
+                        return <InfoBoard data={icon_info} key={idx} 
+                        style={{marginBottom: idx===0 ?"20px":"10px"}}></InfoBoard>
+
                     })
                 }
                 </div>
@@ -95,15 +125,28 @@ function Home(){
                     }               
 
                 </div>
-                <div className="boarding_area">
+
+                {/* <div className="boarding_area"> */}
+                    {/* <div className="board"> */}
+
+                <div className="board_area">
                     <div className="board">
+                        <TableSheetBoard icon={tabel_icon} data={table_configuration_context.slice(0)}></TableSheetBoard>
 
                     </div>
                     <div className="features">
                         <div className="popular">
 
+
                         </div>
                         <div className="category">
+
+                            <OlListTable icon={<GrTrophy/>} title={'인기게시글'}></OlListTable>
+
+                        </div>
+                        <div className="category">
+                            <UlListTable icon={<FaFolderOpen/>} title={'Category'}></UlListTable>
+
 
                         </div>
 
