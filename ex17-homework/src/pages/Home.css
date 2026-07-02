@@ -1,0 +1,28 @@
+.Main_container{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    align-items: flex-start;
+}
+
+.board_search{
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Info_area{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+
+
+
+
+
+
+
+

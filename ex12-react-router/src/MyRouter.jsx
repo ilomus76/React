@@ -14,7 +14,8 @@ import Signup from './page/Signup'
 function MyRouter(){
     return(
         // 경로에 따라 페이지를 다르게 보여주는 라우터 객체 생성 - 라우터 여러개 있는데 기본적인것 보여줄것이다.
-        <BrowserRouter>
+        // 웹호스팅할때 서브경로를 사용한다면 라우터에 등록해놔야 보여짐 
+        <BrowserRouter basename='/vite/'>
             <Routes>
                 {/* 페이지 컴포넌트들을 등록.. 경로와 함께 */}
                 <Route path='/' element={<Home></Home>}></Route>    
