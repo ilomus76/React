@@ -6,36 +6,16 @@ import './DayNight.css'
 
 function DayNight(){
     return (
-
         <div>
-        
-        
-            <div>            
-                <IoIosSunny />
-                <FaMoon />
 
-            </div>
-
-            <div>
-                <button className="Sunny"><IoIosSunny /></button>
-                <button className="Moon"><FaMoon /></button>            
-                
-                
-
-            </div>
-
-
-
-
-            <div>            
-                <IoIosSunny />
-                <FaMoon />
-            </div>
+            <button className="Sunny"><IoIosSunny /></button>
+            <button className="Moon"><FaMoon /></button>            
+            
+            
         </div>
 
-    
-
     )
+
 
 }
 export default DayNight

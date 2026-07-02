@@ -1,0 +1,12 @@
+
+.board_wrap{
+    display: flex;
+    flex-direction:column;
+}
+
+.board_wrap .icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

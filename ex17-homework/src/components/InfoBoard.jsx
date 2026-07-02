@@ -10,15 +10,7 @@ function InfoBoard(props){
             </div>
             <div className="right_area">
                 <div className="title">
-
-
-                    <p><strong>{props.data.title}</strong></p>
-
                     <p className='title_content'><strong>{props.data.title}</strong></p>
-
-
-                    <p><strong>{props.data.title}</strong></p>
-
                 </div>
                 <div className="number">
                     <p>{props.data.number}</p>
