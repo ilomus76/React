@@ -6,6 +6,7 @@ import './DayNight.css'
 
 function DayNight(){
     return (
+
         <div>
         
         
@@ -25,8 +26,14 @@ function DayNight(){
 
 
 
+
+            <div>            
+                <IoIosSunny />
+                <FaMoon />
+            </div>
         </div>
 
+    
 
     )
 
